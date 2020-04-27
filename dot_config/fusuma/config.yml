@@ -1,0 +1,37 @@
+swipe:
+  3:
+    left:
+      command: ''
+    right:
+      command: ''
+    up:
+      command: ''
+      threshold: 1.5
+    down:
+      command: ''
+      threshold: 1.5
+  4:
+    left:
+      command: 'i3-msg workspace prev'
+    right:
+      command: 'i3-msg workspace next'
+    up:
+      command: 'rofi -show drun'
+    down:
+      command: 'rofi -show window'
+pinch:
+  2:
+    in:
+      command: 'i3-msg floating disable'
+      threshold: 0.1
+    out:
+      command: 'i3-msg floating enable'
+      threshold: 0.1
+
+threshold:
+  swipe: 1
+  pinch: 1
+
+interval:
+  swipe: 1
+  pinch: 1

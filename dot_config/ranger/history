@@ -1,0 +1,15 @@
+cd .cnfig
+open .config
+help
+copy panel/angles.ini
+copy ..
+rename config.ini
+
+delete 
+cut 
+copy 
+mkdir ISP-LinuxVersion
+paste 
+open_with 
+del
+delete

@@ -1,0 +1,180 @@
+# set modifier
+set $super Mod4
+set $alt Mod1
+
+# set font
+font pango: Noto Sans 8
+
+# Use Mouse+$super to drag floating windows to their wanted position
+floating_modifier $super
+
+#autostart
+exec --no-startup-id feh --bg-scale ~/Pictures/Random/KDE\ Plasma\ Abstract\ 360.png #wallpaper
+#exec --no-startup-id xsettingsd & #use xfce4 settings
+exec --no-startup-id compton -b #compositor
+exec --nostartup-id flashfocus &
+exec fusuma & #touchpad gestures
+#exec --nostartup-id xcompmgr
+exec mpd #music player daemon
+#exec systemctl --user start xfce4-notifyd #xfce notification daemon
+exec deadd-notification-center & #notification daemon
+exec --no-startup-id udiskie -t #removable drives
+exec xautolock -time 5 -locker "sh /home/blackbox/.local/bin/lock.sh" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'" #autolock
+exec xrandr --output HDMI-1 --auto --left-of eDP-1 #second monitor
+exec xinput --set-prop $(xinput list --id-only "DELL0804:00 06CB:7E7E Touchpad") 316 0 & #touchpad setting
+exec blueman-applet & #bluetooth
+exec system-config-printer-applet & #printer
+exec mate-polkit & #administration
+exec kmix &
+
+# start a terminal
+bindsym $super+Return exec kitty
+
+# start dmenu (a program launcher)
+bindsym $super+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=8'"
+bindsym ctrl+space exec exec rofi -show-icons -drun-display-format {name} -me-select-entry '' -me-accept-entry 'MousePrimary' -show drun
+bindsym $super+w exec rofi -show window
+bindsym $alt+Tab exec rofi -show window 
+
+bindsym $super+Tab exec skippy-xd
+bindsym $super+a exec kill -s USR1 $(pidof deadd-notification-center) &
+
+# common apps keybinds
+bindsym Print exec scrot ~/Pictures/Screenshots/i3-screenshot-%a-%d%b%y-%H.%M.png
+bindsym $super+l exec lock.sh
+bindsym $super+Shift+v exec vivaldi
+bindsym $super+Shift+f exec kitty -e ranger
+bindsym $super+Shift+g exec thunderbird
+
+#change volume
+bindsym XF86AudioRaiseVolume exec "amixer -q set Master 5%+"
+bindsym XF86AudioLowerVolume exec "amixer -q set Master 5%-"
+bindsym XF86AudioMute exec "amixer set Master toggle"
+
+# Screen brightness controls
+#bindsym XF86MonBrightnessUp exec "bright +; notify-send 'brightness up'" 
+#bindsym XF86MonBrightnessDown exec "bright -; notify-send 'brightness down'"
+
+# music control
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioStop exec playerctl stop
+
+# kill focused window
+bindsym $super+c kill
+bindsym $alt+F4 kill
+
+# change focus
+bindsym $super+Left focus left
+bindsym $super+Down focus down
+bindsym $super+Up focus up
+bindsym $super+Right focus right
+
+# move focused window
+bindsym $super+Shift+Left move left
+bindsym $super+Shift+Down move down
+bindsym $super+Shift+Up move up
+bindsym $super+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $super+h split h
+
+# split in vertical orientation
+bindsym $super+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $super+f fullscreen toggle
+
+# change container layout split
+bindsym $super+s layout toggle split
+
+# toggle tiling / floating
+bindsym $super+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $super+Shift+space focus mode_toggle
+
+# switch to workspace
+bindsym $alt+Control+Right workspace next
+bindsym $alt+Control+Left workspace prev
+bindsym $super+1 workspace 1
+bindsym $super+2 workspace 2
+bindsym $super+3 workspace 3
+bindsym $super+4 workspace 4
+bindsym $super+5 workspace 5
+bindsym $super+6 workspace 6
+bindsym $super+7 workspace 7
+bindsym $super+8 workspace 8 
+bindsym $super+9 workspace 9 
+bindsym $super+0 workspace 10 
+
+bindsym $super+equal exec i3-next
+bindsym $super+minus exec i3-back
+
+# move focused container to workspace
+bindsym $super+Shift+1 move container to workspace 1
+bindsym $super+Shift+2 move container to workspace 2
+bindsym $super+Shift+3 move container to workspace 3
+bindsym $super+Shift+4 move container to workspace 4
+bindsym $super+Shift+5 move container to workspace 5
+bindsym $super+Shift+6 move container to workspace 6
+bindsym $super+Shift+7 move container to workspace 7
+bindsym $super+Shift+8 move container to workspace 8
+bindsym $super+Shift+9 move container to workspace 9
+bindsym $super+Shift+0 move container to workspace 10
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $super+Shift+r restart
+
+# exit i3
+bindsym $super+q exec "i3-nagbar -t warning -m 'Really, exit?' -b 'Yes' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
+        bindsym Return mode "default"
+}
+bindsym $super+r mode "resize"
+
+bindsym $super+Ctrl+Right resize shrink width 1 px or 1 ppt
+bindsym $super+Ctrl+Up resize grow height 1 px or 1 ppt
+bindsym $super+Ctrl+Down resize shrink height 1 px or 1 ppt
+bindsym $super+Ctrl+Left resize grow width 1 px or 1 ppt
+
+# window rules, you can find the window class using xprop
+for_window [class=".*"] border pixel 0
+assign [class=Lxappearance|System-config-printer.py|Lxtask|GParted|Pavucontrol|Exo-helper*|Lxrandr|Arandr] 0
+for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol|Nautilus|caligator|Colorpicker|Kite|TKINTER|IDLE|electrum|yubiath-desktop|remmina|minecraft-launcher|kruler|processing-java] floating enable
+for_window [class=URxvt|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
+for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
+for_window [class=Kite|processing-java] border normal
+
+# Launch xfce Power Manager (for screen/keyboard backlight controls)
+exec --no-startup-id xfce4-power-manager
+
+# Launch NetworkManager applet
+exec --no-startup-id nm-applet
+
+# Launch polybar
+exec_always --no-startup-id /home/blackbox/.config/polybar/launch.sh
+
+# Launch compton
+exec_always --no-startup-id $HOME/.config/compton/launch.sh
+
+# Pywal
+exec_always --no-startup-id wal -R
+
+#flashfocus
+exec_always --no-startup-id flashfocus
+
+#i3-gaps
+smart_gaps on
+gaps inner 20
+gaps outer 20
+
+bindsym $super+Shift+b border normal
+bindsym $super+Shift+Ctrl+b border pixel 0
