@@ -15,7 +15,6 @@ exec --no-startup-id compton -b #compositor
 exec --nostartup-id flashfocus &
 exec fusuma & #touchpad gestures
 #exec --nostartup-id xcompmgr
-exec mpd #music player daemon
 #exec systemctl --user start xfce4-notifyd #xfce notification daemon
 exec deadd-notification-center & #notification daemon
 exec --no-startup-id udiskie -t #removable drives
@@ -33,10 +32,8 @@ bindsym $super+Return exec kitty
 # start dmenu (a program launcher)
 bindsym $super+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=8'"
 bindsym ctrl+space exec exec rofi -show-icons -drun-display-format {name} -me-select-entry '' -me-accept-entry 'MousePrimary' -show drun
-bindsym $super+w exec rofi -show window
 bindsym $alt+Tab exec rofi -show window 
-
-bindsym $super+Tab exec skippy-xd
+bindsym $super+Tab exec rofi -show window
 bindsym $super+a exec kill -s USR1 $(pidof deadd-notification-center) &
 
 # common apps keybinds
@@ -169,7 +166,8 @@ exec_always --no-startup-id $HOME/.config/compton/launch.sh
 exec_always --no-startup-id wal -R
 
 #flashfocus
-exec_always --no-startup-id flashfocus
+exec_always --no-startup-id flashfocus &
+bindsym $super+n exec --no-startup-id flash_window
 
 #i3-gaps
 smart_gaps on
@@ -178,3 +176,4 @@ gaps outer 20
 
 bindsym $super+Shift+b border normal
 bindsym $super+Shift+Ctrl+b border pixel 0
+
