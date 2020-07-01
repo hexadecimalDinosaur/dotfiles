@@ -65,6 +65,9 @@ label-visible = %index%
 label-visible-background = ${color.c4}
 label-visible-padding = 1
 
+label-urgent = %index%
+label-urgent-background = #bd2c40
+label-urgent-padding = 1
 
 [module/time]
 type = internal/date
@@ -356,7 +359,7 @@ content-background = ${color.c2}
 [module/files]
 type = custom/text
 content = 
-click-left = kitty -e ranger &
+click-left = nautilus &
 content-padding = 1.5
 content-background = ${color.c2}
 
