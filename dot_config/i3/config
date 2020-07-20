@@ -9,7 +9,7 @@ font pango: Noto Sans 8
 floating_modifier $super
 
 #autostart
-exec --no-startup-id feh --bg-scale ~/Pictures/Random/KDE\ Plasma\ Abstract\ 360.png #wallpaper
+exec --no-startup-id feh --bg-scale ~/Pictures/Random/RPi.jpg #wallpaper
 #exec --no-startup-id xsettingsd & #use xfce4 settings
 exec --no-startup-id compton -b #compositor
 exec --nostartup-id flashfocus &
@@ -31,9 +31,9 @@ bindsym $super+Return exec kitty
 
 # start dmenu (a program launcher)
 bindsym $super+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=8'"
-bindsym ctrl+space exec exec rofi -show-icons -drun-display-format {name} -me-select-entry '' -me-accept-entry 'MousePrimary' -show drun
-bindsym $alt+Tab exec rofi -show window 
-bindsym $super+Tab exec rofi -show window
+bindsym ctrl+space exec exec rofi -show drun -config ~/.config/rofi/lsit.rasi
+bindsym $alt+Tab exec rofi -show window -config ~/.config/rofi/lsit.rasi
+bindsym $super+Tab exec rofi -show window -config ~/.config/rofi/lsit.rasi
 bindsym $super+a exec kill -s USR1 $(pidof deadd-notification-center) &
 
 # common apps keybinds
@@ -42,6 +42,7 @@ bindsym $super+l exec lock.sh
 bindsym $super+Shift+v exec vivaldi
 bindsym $super+Shift+f exec kitty -e ranger
 bindsym $super+Shift+g exec thunderbird
+bindsym $super+y exec rofi-ykman
 
 #change volume
 bindsym XF86AudioRaiseVolume exec "amixer -q set Master 5%+"
