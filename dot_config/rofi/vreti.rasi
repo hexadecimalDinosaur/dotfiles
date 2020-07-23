@@ -13,8 +13,8 @@ configuration {
   background-color: #383838;
   border-color: #252525;
   text-color: #eff0eb;
-  width: 680px;
-  height: 465px;
+  width: 700px;
+  height: 500px;
   location: 0;
 }
 
@@ -55,7 +55,7 @@ listview {
 element {
     orientation:                    vertical;
     border-radius:                  3px;
-    padding:                        10px 0px 10px 0px;
+    padding:                        10px 2px 10px 2px;
 }
 
 element-text {
@@ -72,5 +72,5 @@ element-icon {
 }
 
 element selected {
-  background-color: #19979d;
+  background-color: #505b75;
 }

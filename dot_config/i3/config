@@ -25,23 +25,23 @@ exec blueman-applet & #bluetooth
 exec system-config-printer-applet & #printer
 exec mate-polkit & #administration
 exec kmix &
+exec synclient HorizTwoFingerScroll=1 #touchpad horizontal scrolling
 
 # start a terminal
 bindsym $super+Return exec kitty
 
-# start dmenu (a program launcher)
-bindsym $super+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=8'"
-bindsym ctrl+space exec exec rofi -show drun -config ~/.config/rofi/lsit.rasi
-bindsym $alt+Tab exec rofi -show window -config ~/.config/rofi/lsit.rasi
-bindsym $super+Tab exec rofi -show window -config ~/.config/rofi/lsit.rasi
+# start rofi
+bindsym ctrl+space exec exec rofi -show drun
+bindsym $alt+Tab exec rofi -show window
+bindsym $super+Tab exec rofi -show window
+
+#notification center
 bindsym $super+a exec kill -s USR1 $(pidof deadd-notification-center) &
 
 # common apps keybinds
 bindsym Print exec scrot ~/Pictures/Screenshots/i3-screenshot-%a-%d%b%y-%H.%M.png
 bindsym $super+l exec lock.sh
-bindsym $super+Shift+v exec vivaldi
-bindsym $super+Shift+f exec kitty -e ranger
-bindsym $super+Shift+g exec thunderbird
+bindsym $super+Shift+f exec nautilus
 bindsym $super+y exec rofi-ykman
 
 #change volume
@@ -60,7 +60,6 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioStop exec playerctl stop
 
 # kill focused window
-bindsym $super+c kill
 bindsym $alt+F4 kill
 
 # change focus
@@ -134,6 +133,10 @@ mode "resize" {
         bindsym Down resize grow height 5 px or 5 ppt
         bindsym Up resize shrink height 5 px or 5 ppt
         bindsym Right resize grow width 5 px or 5 ppt
+	bindsym Shift+Left resize shrink width 10 px or 10 ppt
+	bindsym Shift+Down resize grow height 10 px or 10 ppt
+	bindsym Shift+Up resize shrink height 10 px or 10 ppt
+	bindsym Shift+Right resize grow width 10 px or 10 ppt
         bindsym Return mode "default"
 }
 bindsym $super+r mode "resize"
