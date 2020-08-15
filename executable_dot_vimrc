@@ -35,6 +35,8 @@ Plugin 'dense-analysis/ale'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/syntastic'
 Plugin 'arcticicestudio/nord-vim'
+Plugin 'artur-shaik/vim-javacomplete2'
+Plugin 'ryanoasis/vim-devicons'
 " Plugin 'vbe0201/vimdiscord'
 " Plugin 'anned20/vimsence'
 " Plugin 'vim-airline/vim-airline'
@@ -74,7 +76,8 @@ let g:lightline = {
       \ 'subseparator': { 'left': '', 'right': '' }
       \ }
 map <C-h> :%!xxd<CR>
-map <C-t> :term bash<CR>
+map <C-t> :term zsh<CR>
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
 " let g:airline_powerline_fonts = 1
 " let g:airline_theme='deus'
 

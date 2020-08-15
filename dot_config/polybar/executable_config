@@ -12,12 +12,13 @@ fg = #FFF
 [bar/main]
 background = ${color.bg}
 foreground = ${color.fg}
-monitor = eDP-1
+monitor = eDP
+monitor-fallback = eDP-1-1
 width = 100%
 height = 24px
 font-0 = "NotoMono Nerd Font:size=10;2"
 font-1 = "NotoMono Nerd Font:size=18;4"
-modules-left = cpu left-sep-1 mem left-sep-2 temp left-sep-3 disk left-sep-4 updates left-sep-5
+modules-left = cpu left-sep-2 mem left-sep-3 temp left-sep-4 disk left-sep-5
 modules-center = time
 modules-right = right-sep-5 ipv4 right-sep-4 local-ip right-sep-3 wifi right-sep-2
 tray-position = right
@@ -30,7 +31,8 @@ border-color = ${color.c5}
 bottom = true
 background = ${color.bg}
 foreground = ${color.fg}
-monitor = eDP-1
+monitor = eDP
+monitor-fallback = eDP-1-1
 width = 100%
 height = 24
 font-0 = "NotoMono Nerd Font:size=10;2"
@@ -94,7 +96,7 @@ menu-0-0 = poweroff
 menu-0-0-exec = menu-open-1
 menu-0-0-background = ${color.c5}
 menu-1-0 = confirm
-menu-1-0-exec = sudo poweroff &
+menu-1-0-exec = poweroff &
 menu-1-0-background = ${color.c5}
 menu-1-1 = cancel
 menu-1-1-exec = menu-open-0
@@ -104,7 +106,7 @@ menu-0-1 = reboot
 menu-0-1-exec = menu-open-2
 menu-0-1-background = ${color.c5}
 menu-2-0 = confirm
-menu-2-0-exec = sudo reboot &
+menu-2-0-exec = reboot &
 menu-2-0-background = ${color.c5}
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
@@ -135,7 +137,7 @@ interval = 1
 label =  %gb_free%
 format = <label>
 label-padding = 1.5
-label-background = ${color.c4}
+label-background = ${color.c3}
 
 
 [module/cpu]
@@ -144,20 +146,20 @@ interval = 1
 format = <label>
 label =  %percentage%%
 label-padding = 1.5
-label-background = ${color.c5}
+label-background = ${color.c4}
 
 
 [module/temp]
 type = internal/temperature
 interval = 1
-thermal-zone = 5
+thermal-zone = 0
 units = true
 label =  %temperature-c%
 label-warn =  %temperature-c%
 label-padding = 1.5
-label-background = ${color.c3}
+label-background = ${color.c2}
 label-warn-padding = 1.5
-label-warn-background = ${color.c3}
+label-warn-background = ${color.c2}
 
 
 [module/disk]
@@ -166,7 +168,7 @@ mount-0 = /
 interval = 10
 label-mounted =  %free%
 label-mounted-padding = 1.5
-label-mounted-background = ${color.c2}
+label-mounted-background = ${color.c1}
 
 
 [module/updates]
@@ -181,7 +183,7 @@ label-background = ${color.c1}
 
 [module/wifi]
 type = internal/network
-interface = wlp1s0
+interface = wlp2s0
 interval = 3
 format-connected = <label-connected>
 label-connected =  %essid%
@@ -194,7 +196,7 @@ label-disconnected-background = ${color.c3}
 
 [module/local-ip]
 type = internal/network
-interface = wlp1s0
+interface = wlp2s0
 interval = 3
 format-connected = <label-connected>
 label-connected =  %local_ip%
@@ -208,7 +210,7 @@ label-disconnected-background = ${color.c2}
 [module/ipv4]
 type = custom/script
 exec = /home/blackbox/.config/polybar/pub-ipv4.sh
-interval = 3
+interval = 10
 label = 爵 %output%
 tail = true
 label-background = ${color.c1}
@@ -343,7 +345,7 @@ content-background = ${color.c2}
 [module/discord]
 type = custom/text
 content = ﭮ
-click-left = discord &
+click-left = lightcord &
 content-padding = 1.5
 content-background = ${color.c2}
 

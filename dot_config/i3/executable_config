@@ -9,7 +9,7 @@ font pango: Noto Sans 8
 floating_modifier $super
 
 #autostart
-exec --no-startup-id feh --bg-scale ~/Pictures/Random/RPi.jpg #wallpaper
+exec --no-startup-id feh --bg-scale ~/Pictures/Random/rogue.png #wallpaper
 #exec --no-startup-id xsettingsd & #use xfce4 settings
 exec --no-startup-id compton -b #compositor
 exec --nostartup-id flashfocus &
@@ -18,40 +18,41 @@ exec fusuma & #touchpad gestures
 #exec systemctl --user start xfce4-notifyd #xfce notification daemon
 exec deadd-notification-center & #notification daemon
 exec --no-startup-id udiskie -t #removable drives
-exec xautolock -time 5 -locker "sh /home/blackbox/.local/bin/lock.sh" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'" #autolock
-exec xrandr --output HDMI-1 --auto --left-of eDP-1 #second monitor
+#exec xautolock -time 5 -locker "sh /home/blackbox/.local/bin/lock.sh" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'" #autolock
+exec xrandr --output HDMI-A-0 --auto --left-of eDP #second monitor
+exec xrandr --output HDMI-1-1 --auto --left-of eDP-1-1
 exec xinput --set-prop $(xinput list --id-only "DELL0804:00 06CB:7E7E Touchpad") 316 0 & #touchpad setting
 exec blueman-applet & #bluetooth
 exec system-config-printer-applet & #printer
-exec mate-polkit & #administration
+exec /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 & #administration
 exec kmix &
-exec synclient HorizTwoFingerScroll=1 #touchpad horizontal scrolling
+exec systemctl --user stop xfce4-notifyd.service
+exec systemctl --user start deadd-notification-center.service
 
-# start a terminal
-bindsym $super+Return exec kitty
+#touchpad settings
+exec xinput --set-prop 'ELAN1201:00 04F3:3098 Touchpad' 'libinput Accel Speed' 0.2
+exec xinput --set-prop 'ELAN1201:00 04F3:3098 Touchpad' 'libinput Tapping Enabled' 1
+exec xinput --set-prop 'ELAN1201:00 04F3:3098 Touchpad' 'libinput Natural Scrolling Enabled' 1
 
-# start rofi
-bindsym ctrl+space exec exec rofi -show drun
-bindsym $alt+Tab exec rofi -show window
-bindsym $super+Tab exec rofi -show window
-
-#notification center
-bindsym $super+a exec kill -s USR1 $(pidof deadd-notification-center) &
-
-# common apps keybinds
-bindsym Print exec scrot ~/Pictures/Screenshots/i3-screenshot-%a-%d%b%y-%H.%M.png
-bindsym $super+l exec lock.sh
+bindsym $super+Return exec kitty #kitty terminal
+bindsym ctrl+space exec rofi -show drun #rofi app menu
+bindsym $alt+Tab exec rofi -show window #rofi windows
+bindsym $super+a exec kill -s USR1 $(pidof deadd-notification-center) & #deadd notification center
+bindsym $super+l exec lock.sh #lock screen
 bindsym $super+Shift+f exec nautilus
 bindsym $super+y exec rofi-ykman
+bindsym $super+Tab exec rofi -show window #rofi windows
+bindsym Print exec scrot ~/Pictures/Screenshots/i3-screenshot-%a-%d%b%y-%H.%M.png #screenshot
+bindsym $super+k exec bash ~/Documents/Git\ Projects/rofi-i3-keybinds/rofi-i3-keybinds.sh #keybind menu
 
 #change volume
-bindsym XF86AudioRaiseVolume exec "amixer -q set Master 5%+"
-bindsym XF86AudioLowerVolume exec "amixer -q set Master 5%-"
-bindsym XF86AudioMute exec "amixer set Master toggle"
+bindsym XF86AudioRaiseVolume exec amixer -q set Master "5%+" #increase volume
+bindsym XF86AudioLowerVolume exec amixer -q set Master "5%-" #decrease volume
+bindsym XF86AudioMute exec amixer set Master toggle #mute volume
 
 # Screen brightness controls
-#bindsym XF86MonBrightnessUp exec "bright +; notify-send 'brightness up'" 
-#bindsym XF86MonBrightnessDown exec "bright -; notify-send 'brightness down'"
+#bindsym XF86MonBrightnessUp exec "bright +; notify-send 'brightness up'" #increase brightness
+#bindsym XF86MonBrightnessDown exec "bright -; notify-send 'brightness down'" #decrease brightness
 
 # music control
 bindsym XF86AudioNext exec playerctl next
@@ -59,7 +60,6 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioStop exec playerctl stop
 
-# kill focused window
 bindsym $alt+F4 kill
 
 # change focus
@@ -139,7 +139,7 @@ mode "resize" {
 	bindsym Shift+Right resize grow width 10 px or 10 ppt
         bindsym Return mode "default"
 }
-bindsym $super+r mode "resize"
+bindsym $super+r mode resize
 
 bindsym $super+Ctrl+Right resize shrink width 1 px or 1 ppt
 bindsym $super+Ctrl+Up resize grow height 1 px or 1 ppt
@@ -161,17 +161,14 @@ exec --no-startup-id xfce4-power-manager
 exec --no-startup-id nm-applet
 
 # Launch polybar
-exec_always --no-startup-id /home/blackbox/.config/polybar/launch.sh
+exec /home/blackbox/.config/polybar/launch.sh &
 
 # Launch compton
 exec_always --no-startup-id $HOME/.config/compton/launch.sh
 
-# Pywal
-exec_always --no-startup-id wal -R
-
 #flashfocus
 exec_always --no-startup-id flashfocus &
-bindsym $super+n exec --no-startup-id flash_window
+bindsym $super+n exec flash_window
 
 #i3-gaps
 smart_gaps on

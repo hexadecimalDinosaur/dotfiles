@@ -1,0 +1,1 @@
+export PATH="$PATH:/home/blackbox/.gem/ruby/2.7.0/bin:/home/blackbox/.cargo/bin:/home/blackbox/.local/bin"
