@@ -33,13 +33,10 @@ temp=$(cat /proc/cpuinfo | grep "model name" -m 1)
 CPU=${temp:13:100}
 UPT=$(uptime | awk -F, '{sub(".*up ",x,$1);print $1}' | sed -e 's/^[ \t]*//')
 
-PKG=$(expr $(apt list --upgradable 2>/dev/null | wc -l) - 1)
 TX1=UPTIME:
-TX2=UPDATES:
 TX3=OS:
 TX4=KERNEL:
 TX5=CPU:
-TX6=packages
 TX7=DESKTOP:
 TX8=MODEL:
 TX9=TERM:
@@ -78,8 +75,6 @@ $f6                █▄▄█─█░░▀░░┬░░▀░░█─█�
         $f1$TX4 $f4$KRN
 	$f1$TX8 $f4$MOD
         $f1$TX5 $f4$CPU
-        $f1$TX1 $f4$UPT 
-        $f1$TX2 $f4$PKG $TX6
 	$f1$TX11 $f4$HOME
 	$f1$TX7 $f4$DESKTOP_SESSION
 	$f1$TX10 $f4$SHELL
