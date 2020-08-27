@@ -61,7 +61,7 @@ ZSH_THEME="ys"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
+#ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -101,9 +101,10 @@ source $ZSH/oh-my-zsh.sh
 alias v="nvim"
 alias vim="nvim"
 alias ls="colorls"
-alias spt="systemctl --user start spotifyd && spt && systemctl --user stop spotifyd"
 alias kitty-ssh="kitty +kitten ssh"
+alias spt="spotifyd && spt && pkill -f spotifyd"
 
+export GPG_TTY=$(tty)
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
