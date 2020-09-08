@@ -13,20 +13,20 @@ exec --no-startup-id feh --bg-scale ~/Pictures/Random/rogue.png #wallpaper
 #exec --no-startup-id xsettingsd & #use xfce4 settings
 exec --no-startup-id compton -b #compositor
 exec --nostartup-id flashfocus &
-exec fusuma & #touchpad gestures
+#exec fusuma & #touchpad gestures
 #exec --nostartup-id xcompmgr
 #exec systemctl --user start xfce4-notifyd #xfce notification daemon
 exec deadd-notification-center & #notification daemon
 exec --no-startup-id udiskie -t #removable drives
 #exec xautolock -time 5 -locker "sh /home/blackbox/.local/bin/lock.sh" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'" #autolock
-exec xrandr --output HDMI-A-0 --auto --left-of eDP #second monitor
+exec xrandr --output HDMI-1 --auto --left-of eDP-1 #second monitor
 exec xrandr --output HDMI-1-1 --auto --left-of eDP-1-1
 exec xinput --set-prop $(xinput list --id-only "DELL0804:00 06CB:7E7E Touchpad") 316 0 & #touchpad setting
 exec blueman-applet & #bluetooth
 exec system-config-printer-applet & #printer
 exec /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 & #administration
 exec kmix &
-exec systemctl --user stop xfce4-notifyd.service
+exec --no-startup-id systemctl --user stop xfce4-notifyd &
 exec systemctl --user start deadd-notification-center.service
 
 #touchpad settings
@@ -38,7 +38,7 @@ bindsym $super+Return exec kitty #kitty terminal
 bindsym ctrl+space exec rofi -show drun #rofi app menu
 bindsym $alt+Tab exec rofi -show window #rofi windows
 bindsym $super+a exec kill -s USR1 $(pidof deadd-notification-center) & #deadd notification center
-bindsym $super+l exec lock.sh #lock screen
+bindsym $super+l exec xflock4 #lock screen
 bindsym $super+Shift+f exec nautilus
 bindsym $super+y exec rofi-ykman
 bindsym $super+Tab exec rofi -show window #rofi windows
@@ -49,6 +49,7 @@ bindsym $super+k exec bash ~/Documents/Git\ Projects/rofi-i3-keybinds/rofi-i3-ke
 bindsym XF86AudioRaiseVolume exec amixer -q set Master "5%+" #increase volume
 bindsym XF86AudioLowerVolume exec amixer -q set Master "5%-" #decrease volume
 bindsym XF86AudioMute exec amixer set Master toggle #mute volume
+bindsym XF86AudioMicMute exec amixer set Capture toggle #mute microphone
 
 # Screen brightness controls
 #bindsym XF86MonBrightnessUp exec "bright +; notify-send 'brightness up'" #increase brightness
@@ -149,7 +150,7 @@ bindsym $super+Ctrl+Left resize grow width 1 px or 1 ppt
 # window rules, you can find the window class using xprop
 for_window [class=".*"] border pixel 0
 assign [class=Lxappearance|System-config-printer.py|Lxtask|GParted|Pavucontrol|Exo-helper*|Lxrandr|Arandr] 0
-for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol|Nautilus|caligator|Colorpicker|Kite|TKINTER|IDLE|electrum|yubiath-desktop|remmina|minecraft-launcher|kruler|processing-java] floating enable
+for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol|Nautilus|caligator|Colorpicker|Kite|TKINTER|IDLE|electrum|yubiath-desktop|remmina|minecraft-launcher|kruler|processing-java|tor-browser] floating enable
 for_window [class=URxvt|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
 for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
 for_window [class=Kite|processing-java] border normal

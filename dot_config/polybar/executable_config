@@ -12,7 +12,7 @@ fg = #FFF
 [bar/main]
 background = ${color.bg}
 foreground = ${color.fg}
-monitor = eDP
+monitor = eDP-1
 monitor-fallback = eDP-1-1
 width = 100%
 height = 24px
@@ -31,7 +31,7 @@ border-color = ${color.c5}
 bottom = true
 background = ${color.bg}
 foreground = ${color.fg}
-monitor = eDP
+monitor = eDP-1
 monitor-fallback = eDP-1-1
 width = 100%
 height = 24
@@ -113,7 +113,7 @@ menu-2-1-exec = menu-open-0
 menu-2-1-background = ${color.c5}
 
 menu-0-2 = lock
-menu-0-2-exec = lock.sh
+menu-0-2-exec = xflock4
 menu-0-2-background = ${color.c5}
 
 menu-0-3 = logout
