@@ -49,7 +49,7 @@ listview {
 
 element {
   border: 0 0 1px 0;
-  padding: 7px;
+  padding: 4px;
 }
 
 element-text {
