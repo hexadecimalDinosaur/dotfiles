@@ -20,7 +20,7 @@ exec deadd-notification-center & #notification daemon
 exec --no-startup-id udiskie -t #removable drives
 #exec xautolock -time 5 -locker "sh /home/blackbox/.local/bin/lock.sh" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'" #autolock
 exec xrandr --output HDMI-1 --auto --left-of eDP-1 #second monitor
-exec xrandr --output HDMI-A-0 --auto --left-of eDP
+exec xrandr --output HDMI-1-1 --auto --left-of eDP-1-1
 exec xinput --set-prop $(xinput list --id-only "DELL0804:00 06CB:7E7E Touchpad") 316 0 & #touchpad setting
 exec blueman-applet & #bluetooth
 exec system-config-printer-applet & #printer
