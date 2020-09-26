@@ -9,12 +9,12 @@ font pango: Noto Sans 8
 floating_modifier $super
 
 #autostart
-exec --no-startup-id feh --bg-scale ~/Pictures/Random/rogue.png #wallpaper
+exec --no-startup-id feh --bg-scale ~/Pictures/Random/NfiHi07.jpg #wallpaper
 #exec --no-startup-id xsettingsd & #use xfce4 settings
-exec --no-startup-id compton -b #compositor
+#exec --no-startup-id compton -b #compositor
+exec_always picom &
 exec --nostartup-id flashfocus &
 #exec fusuma & #touchpad gestures
-#exec --nostartup-id xcompmgr
 #exec systemctl --user start xfce4-notifyd #xfce notification daemon
 exec deadd-notification-center & #notification daemon
 exec --no-startup-id udiskie -t #removable drives
@@ -163,9 +163,6 @@ exec --no-startup-id nm-applet
 
 # Launch polybar
 exec /home/blackbox/.config/polybar/launch.sh &
-
-# Launch compton
-exec_always --no-startup-id $HOME/.config/compton/launch.sh
 
 #flashfocus
 exec_always --no-startup-id flashfocus &
