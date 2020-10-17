@@ -21,6 +21,7 @@ exec --no-startup-id udiskie -t #removable drives
 #exec xautolock -time 5 -locker "sh /home/blackbox/.local/bin/lock.sh" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'" #autolock
 exec xrandr --output HDMI-1 --auto --left-of eDP-1 #second monitor
 exec xrandr --output HDMI-1-1 --auto --left-of eDP-1-1
+exec xrandr --output HDMI-1 --mode 1920x1080 --rate 74.97
 exec xinput --set-prop $(xinput list --id-only "DELL0804:00 06CB:7E7E Touchpad") 316 0 & #touchpad setting
 exec blueman-applet & #bluetooth
 exec system-config-printer-applet & #printer
@@ -150,7 +151,7 @@ bindsym $super+Ctrl+Left resize grow width 1 px or 1 ppt
 # window rules, you can find the window class using xprop
 for_window [class=".*"] border pixel 0
 assign [class=Lxappearance|System-config-printer.py|Lxtask|GParted|Pavucontrol|Exo-helper*|Lxrandr|Arandr] 0
-for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol|Nautilus|caligator|Colorpicker|Kite|TKINTER|IDLE|electrum|yubiath-desktop|remmina|minecraft-launcher|kruler|processing-java|tor-browser] floating enable
+for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol|Nautilus|caligator|Colorpicker|Kite|TKINTER|IDLE|electrum|yubiath-desktop|remmina|minecraft-launcher|kruler|processing-java|tor-browser|gnome-screenshot] floating enable
 for_window [class=URxvt|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
 for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
 for_window [class=Kite|processing-java] border normal
