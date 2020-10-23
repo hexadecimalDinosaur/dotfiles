@@ -321,7 +321,7 @@ content-background = ${color.c1}
 [module/rofi]
 type = custom/text
 content = 
-click-left = rofi -show drun -config ~/.config/rofi/lsit.rasi
+click-left = rofi -show drun
 content-padding = 1.5
 content-background = ${color.c3}
 
