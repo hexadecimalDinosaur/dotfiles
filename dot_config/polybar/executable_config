@@ -345,7 +345,7 @@ content-background = ${color.c2}
 [module/discord]
 type = custom/text
 content = ﭮ
-click-left = lightcord &
+click-left = /opt/Lightcord/lightcord &
 content-padding = 1.5
 content-background = ${color.c2}
 

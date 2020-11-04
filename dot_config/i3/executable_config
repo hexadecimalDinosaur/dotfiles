@@ -29,6 +29,7 @@ exec /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 & #administration
 exec kmix &
 exec --no-startup-id systemctl --user stop xfce4-notifyd &
 exec systemctl --user start deadd-notification-center.service
+exec optimus-manager-qt &
 
 #touchpad settings
 exec xinput --set-prop 'ELAN1201:00 04F3:3098 Touchpad' 'libinput Accel Speed' 0.2
@@ -43,7 +44,7 @@ bindsym $super+l exec xflock4 #lock screen
 bindsym $super+Shift+f exec nautilus
 bindsym $super+y exec rofi-ykman
 bindsym $super+Tab exec rofi -show window #rofi windows
-bindsym Print exec scrot ~/Pictures/Screenshots/i3-screenshot-%a-%d%b%y-%H.%M.png #screenshot
+#bindsym Print exec scrot ~/Pictures/Screenshots/i3-screenshot-%a-%d%b%y-%H.%M.png #screenshot
 bindsym $super+k exec bash ~/Documents/Git\ Projects/rofi-i3-keybinds/rofi-i3-keybinds.sh #keybind menu
 
 #change volume
