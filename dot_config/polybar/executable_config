@@ -3,8 +3,8 @@ c1 = #202020
 c2 = #434343
 c3 = #616161
 c4 = #757575
-c5 = #9e9e9e
-highlight = #505b75
+c5 = #9E9E9E
+highlight = #505B75
 bg = #000000
 fg = #FFF
 
@@ -36,10 +36,10 @@ monitor-fallback = eDP-1-1
 width = 100%
 height = 24
 font-0 = "NotoMono Nerd Font:size=10;2"
-font-1 = "NotoMono Nerd Font:size=18;4"
+font-1 = "NotoMono Nerd Font:size=18;5"
 modules-left = rofi left-sep-3 firefox term files discord left-sep-4 playerctl-prev playerctl-play playerctl-next playerctl left-sep-5
 modules-center = i3
-modules-right = right-sep-5 alsa right-sep-4 battery right-sep-3 redshift right-sep-2 notification right-sep-1 power
+modules-right = right-sep-5 pulseaudio right-sep-4 battery right-sep-3 redshift right-sep-2 notification right-sep-1 power
 border-top-size = 2
 border-color = ${color.c5}
 
@@ -226,7 +226,7 @@ content-background = ${color.c4}
 
 [module/redshift]
 type = custom/text
-click-left = ~/.config/polybar/scripts/toggleredshift.sh
+click-left = redshift-gtk &
 content = 
 content-padding = 1.5
 content-background = ${color.c3}
@@ -273,6 +273,21 @@ ramp-volume-2 = 墳
 label-muted = "ﱝ Muted"
 label-muted-background = ${color.c1}
 label-muted-padding = 1.5
+
+
+[module/pulseaudio]
+type = internal/pulseaudio
+format-volume = <ramp-volume> <label-volume>
+format-volume-background = ${color.c1}
+format-volume-padding = 1.5
+label-volume = %percentage%%
+ramp-volume-0 = 奄
+ramp-volume-1 = 奔
+ramp-volume-2 = 墳
+label-muted = "ﱝ Muted"
+label-muted-background = ${color.c1}
+label-muted-padding = 1.5
+click-right = pavucontrol &
 
 
 [module/playerctl]
@@ -345,7 +360,7 @@ content-background = ${color.c2}
 [module/discord]
 type = custom/text
 content = ﭮ
-click-left = /opt/Lightcord/lightcord &
+click-left = discord &
 content-padding = 1.5
 content-background = ${color.c2}
 
@@ -386,60 +401,60 @@ content-background = ${color.c2}
 
 [module/right-sep-1]
 type = custom/text
-content = %{T2}%{T2}
+content = %{T2}%{T-}
 content-foreground = ${color.c5}
 content-background = ${color.c4}
 
 [module/right-sep-2]
 type = custom/text
-content = %{T2}%{T2}
+content = %{T2}%{T-}
 content-foreground = ${color.c4}
 content-background = ${color.c3}
 
 [module/right-sep-3]
 type = custom/text
-content = %{T2}%{T2}
+content = %{T2}%{T-}
 content-foreground = ${color.c3}
 content-background = ${color.c2}
 
 [module/right-sep-4]
 type = custom/text
-content = %{T2}%{T2}
+content = %{T2}%{T-}
 content-foreground = ${color.c2}
 content-background = ${color.c1}
 
 [module/right-sep-5]
 type = custom/text
-content = %{T2}%{T2}
+content = %{T2}%{T-}
 content-foreground = ${color.c1}
 content-background = ${color.bg}
 
 [module/left-sep-1]
 type = custom/text
-content = %{T2}%{T2}
+content = %{T2}%{T-}
 content-foreground = ${color.c5}
 content-background = ${color.c4}
 
 [module/left-sep-2]
 type = custom/text
-content = %{T2}%{T2}
+content = %{T2}%{T-}
 content-foreground = ${color.c4}
 content-background = ${color.c3}
 
 [module/left-sep-3]
 type = custom/text
-content = %{T2}%{T2}
+content = %{T2}%{T-}
 content-foreground = ${color.c3}
 content-background = ${color.c2}
 
 [module/left-sep-4]
 type = custom/text
-content = %{T2}%{T2}
+content = %{T2}%{T-}
 content-foreground = ${color.c2}
 content-background = ${color.c1}
 
 [module/left-sep-5]
 type = custom/text
-content = %{T2}%{T2}
+content = %{T2}%{T-}
 content-foreground = ${color.c1}
 content-background = ${color.bg}
