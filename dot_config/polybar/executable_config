@@ -37,6 +37,7 @@ width = 100%
 height = 24
 font-0 = "NotoMono Nerd Font:size=10;2"
 font-1 = "NotoMono Nerd Font:size=18;5"
+font-2 = "Meiryo:size=10;2"
 modules-left = rofi left-sep-3 firefox term files discord left-sep-4 playerctl-prev playerctl-play playerctl-next playerctl left-sep-5
 modules-center = i3
 modules-right = right-sep-5 pulseaudio right-sep-4 battery right-sep-3 redshift right-sep-2 notification right-sep-1 power
@@ -226,7 +227,7 @@ content-background = ${color.c4}
 
 [module/redshift]
 type = custom/text
-click-left = redshift-gtk &
+click-left = redshift-gtk -l 43.76:-79.40 &
 content = 
 content-padding = 1.5
 content-background = ${color.c3}
