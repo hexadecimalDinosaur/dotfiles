@@ -1,0 +1,468 @@
+[color]
+c1 = #202020
+;c1 = #292F3D
+c2 = #434343
+;c2 = #414B62
+c3 = #616161
+;c3 = #5A6787
+c4 = #757575
+;c4 = #7885A5
+c5 = #9E9E9E
+;c5 = #9DA6BE
+highlight = #505B75
+bg = #000000
+fg = #FFF
+;fg = #d8dee9
+
+
+[bar/main]
+background = ${color.bg}
+foreground = ${color.fg}
+monitor = eDP-1
+monitor-fallback = eDP-1-1
+width = 100%
+height = 24px
+font-0 = "NotoMono Nerd Font:size=10;2"
+font-1 = "NotoMono Nerd Font:size=18;4"
+modules-left = cpu left-sep-2 mem left-sep-3 temp left-sep-4 disk left-sep-5
+modules-center = time
+modules-right = right-sep-5 ipv4 right-sep-4 local-ip right-sep-3 wifi right-sep-2
+tray-position = right
+tray-background = ${color.c4}
+border-bottom-size = 2
+border-color = ${color.c5}
+
+
+[bar/bottom]
+bottom = true
+background = ${color.bg}
+foreground = ${color.fg}
+monitor = eDP-1
+monitor-fallback = eDP-1-1
+width = 100%
+height = 24
+font-0 = "NotoMono Nerd Font:size=10;2"
+font-1 = "NotoMono Nerd Font:size=18;5"
+font-2 = "Meiryo:size=10;2"
+modules-left = rofi left-sep-3 firefox term files discord left-sep-4 playerctl-prev playerctl-play playerctl-next playerctl left-sep-5
+modules-center = i3
+modules-right = right-sep-5 pulseaudio right-sep-4 battery right-sep-3 redshift right-sep-2 notification right-sep-1 power
+border-top-size = 2
+border-color = ${color.c5}
+
+
+[gloabl/wm]
+margin-bottom = 0
+margin-top = 0
+
+
+[module/i3]
+type = internal/i3
+index-sort = true
+enable-scroll = true
+enable-click = true
+format = <label-state> <label-mode>
+
+label-focused = %index%
+label-focused-background = ${color.c5}
+label-focused-padding = 1
+
+label-unfocused = %index%
+label-unfocused-padding = 1
+
+label-visible = %index%
+label-visible-background = ${color.c4}
+label-visible-padding = 1
+
+label-urgent = %index%
+label-urgent-background = #bd2c40
+;label-urgent-background = #d08770
+label-urgent-padding = 1
+
+[module/time]
+type = internal/date
+interval = 0.5
+date = %Y/%m/%d
+time = %H:%M:%S
+label = %time% - %date%
+label-padding = 1
+
+
+[module/power]
+type = custom/menu
+expand-right = true
+label-open = 拉
+label-open-background = ${color.c5}
+label-close = 拉
+label-close-background = ${color.c5}
+label-separator = "  "
+label-separator-background = ${color.c5}
+label-open-padding = 1
+label-close-padding = 1
+
+menu-0-0 = poweroff
+menu-0-0-exec = menu-open-1
+menu-0-0-background = ${color.c5}
+menu-1-0 = confirm
+menu-1-0-exec = poweroff &
+menu-1-0-background = ${color.c5}
+menu-1-1 = cancel
+menu-1-1-exec = menu-open-0
+menu-1-1-background = ${color.c5}
+
+menu-0-1 = reboot
+menu-0-1-exec = menu-open-2
+menu-0-1-background = ${color.c5}
+menu-2-0 = confirm
+menu-2-0-exec = reboot &
+menu-2-0-background = ${color.c5}
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+menu-2-1-background = ${color.c5}
+
+menu-0-2 = lock
+menu-0-2-exec = xflock4
+menu-0-2-background = ${color.c5}
+
+menu-0-3 = logout
+menu-0-3-exec = menu-open-3
+menu-0-3-background = ${color.c5}
+menu-3-0 = logout
+menu-3-0-exec = i3-msg exit 
+menu-3-0-background = ${color.c5}
+menu-3-1 = cancel
+menu-3-1-exec = menu-open-0
+menu-3-1-background = ${color.c5}
+
+menu-0-4 = switch user
+menu-0-4-background = ${color.c5}
+menu-0-4-exec = dm-tool switch-to-greeter
+
+
+[module/mem]
+type = internal/memory
+interval = 1
+label =  %gb_free%
+format = <label>
+label-padding = 1.5
+label-background = ${color.c3}
+
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+format = <label>
+label =  %percentage%%
+label-padding = 1.5
+label-background = ${color.c4}
+
+
+[module/temp]
+type = internal/temperature
+interval = 1
+thermal-zone = 0
+units = true
+label =  %temperature-c%
+label-warn =  %temperature-c%
+label-padding = 1.5
+label-background = ${color.c2}
+label-warn-padding = 1.5
+label-warn-background = ${color.c2}
+
+
+[module/disk]
+type = internal/fs
+mount-0 = /
+interval = 10
+label-mounted =  %free%
+label-mounted-padding = 1.5
+label-mounted-background = ${color.c1}
+
+
+[module/updates]
+type = custom/script
+exec = expr $(apt list --upgradable 2>/dev/null | wc -l) - 1
+format = <label>
+interval = 60
+label =  %output% updates
+label-padding = 1.5
+label-background = ${color.c1}
+
+
+[module/wifi]
+type = internal/network
+interface = wlp2s0
+interval = 3
+format-connected = <label-connected>
+label-connected =  %essid%
+label-connected-padding = 1.5
+label-connected-background = ${color.c3}
+format-disconnected = <label-disconnected>
+label-disconnected = 睊 disconnected
+label-disconnected-padding = 1.5
+label-disconnected-background = ${color.c3}
+
+[module/local-ip]
+type = internal/network
+interface = wlp2s0
+interval = 3
+format-connected = <label-connected>
+label-connected =  %local_ip%
+label-connected-padding = 1.5
+label-connected-background = ${color.c2}
+format-disconnected = <label-disconnected>
+label-disconnected = " "
+label-disconnected-padding = 1.5
+label-disconnected-background = ${color.c2}
+
+[module/ipv4]
+type = custom/script
+exec = /home/blackbox/.config/polybar/pub-ipv4.sh
+interval = 10
+label = 爵 %output%
+tail = true
+label-background = ${color.c1}
+label-padding = 1.5
+
+
+[module/notification]
+type = custom/text
+click-left = kill -s USR1 $(pidof deadd-notification-center) &
+content = 
+content-padding = 1.5
+content-background = ${color.c4}
+
+[module/redshift]
+type = custom/text
+click-left = redshift-gtk -l 43.76:-79.40 &
+content = 
+content-padding = 1.5
+content-background = ${color.c3}
+
+
+[module/battery]
+type = internal/battery
+full-at = 100
+battery = BAT0
+adapter = AC
+poll-interval = 5
+
+format-charging = <label-charging>
+format-charging-background = ${color.c2}
+format-charging-padding = 1.5
+label-charging =  %percentage%%
+
+format-discharging = <ramp-capacity> <label-discharging>
+label-discharging = %percentage%%
+format-discharging-background = ${color.c2}
+format-discharging-padding = 1.5
+
+label-full =  %percentage%%
+label-full-background = ${color.c2}
+label-full-padding = 1.5
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+
+[module/alsa]
+type = internal/alsa
+format-volume = <ramp-volume> <label-volume>
+format-volume-background = ${color.c1}
+format-volume-padding = 1.5
+label-volume = %percentage%%
+ramp-volume-0 = 奄
+ramp-volume-1 = 奔
+ramp-volume-2 = 墳
+
+label-muted = "ﱝ Muted"
+label-muted-background = ${color.c1}
+label-muted-padding = 1.5
+
+
+[module/pulseaudio]
+type = internal/pulseaudio
+format-volume = <ramp-volume> <label-volume>
+format-volume-background = ${color.c1}
+format-volume-padding = 1.5
+label-volume = %percentage%%
+ramp-volume-0 = 奄
+ramp-volume-1 = 奔
+ramp-volume-2 = 墳
+label-muted = "ﱝ Muted"
+label-muted-background = ${color.c1}
+label-muted-padding = 1.5
+click-right = pavucontrol &
+
+
+[module/playerctl]
+type = custom/script
+exec = $HOME/.config/polybar/scripts/player-mpris-simple.sh
+interval = 2
+click-left = playerctl play-pause &
+format = <label>
+label = %output%
+format-background = ${color.c1}
+format-padding = 1.5
+
+
+[module/playerctl-next]
+type = custom/text
+content = 怜
+click-left = playerctl next &
+content-padding = 1
+content-background = ${color.c1}
+
+
+[module/playerctl-prev]
+type = custom/text
+content = 玲
+click-left = playerctl previous &
+content-padding = 1
+content-background = ${color.c1}
+
+
+[module/playerctl-stop]
+type = custom/text
+content = 栗
+click-left = playerctl stop &
+content-padding = 1
+content-background = ${color.c1}
+
+
+[module/playerctl-play]
+type = custom/text
+content = 懶
+click-left = playerctl play-pause &
+content-padding = 1
+content-background = ${color.c1}
+
+
+[module/rofi]
+type = custom/text
+content = 
+click-left = rofi -show drun
+content-padding = 1.5
+content-background = ${color.c3}
+
+
+[module/firefox]
+type = custom/text
+content = 
+click-left = firefox &
+content-padding = 1.5
+content-background = ${color.c2}
+
+
+[module/mail]
+type = custom/text
+content = 
+click-left = thunderbird &
+content-padding = 1.5
+content-background = ${color.c2}
+
+
+[module/discord]
+type = custom/text
+content = ﭮ
+click-left = discord &
+content-padding = 1.5
+content-background = ${color.c2}
+
+
+[module/term]
+type = custom/text
+content = 
+click-left = kitty &
+content-padding = 1.5
+content-background = ${color.c2}
+
+
+[module/files]
+type = custom/text
+content = 
+click-left = nautilus &
+content-padding = 1.5
+content-background = ${color.c2}
+
+
+[module/vscode]
+type = custom/text
+content = 
+click-left = code &
+content-padding = 1.5
+content-background = ${color.c2}
+
+
+[module/mousepad]
+type = custom/text
+content = 
+click-left = mousepad &
+content-padding = 1.5
+content-background = ${color.c2}
+
+
+;-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/right-sep-1]
+type = custom/text
+content = %{T2}%{T-}
+content-foreground = ${color.c5}
+content-background = ${color.c4}
+
+[module/right-sep-2]
+type = custom/text
+content = %{T2}%{T-}
+content-foreground = ${color.c4}
+content-background = ${color.c3}
+
+[module/right-sep-3]
+type = custom/text
+content = %{T2}%{T-}
+content-foreground = ${color.c3}
+content-background = ${color.c2}
+
+[module/right-sep-4]
+type = custom/text
+content = %{T2}%{T-}
+content-foreground = ${color.c2}
+content-background = ${color.c1}
+
+[module/right-sep-5]
+type = custom/text
+content = %{T2}%{T-}
+content-foreground = ${color.c1}
+content-background = ${color.bg}
+
+[module/left-sep-1]
+type = custom/text
+content = %{T2}%{T-}
+content-foreground = ${color.c5}
+content-background = ${color.c4}
+
+[module/left-sep-2]
+type = custom/text
+content = %{T2}%{T-}
+content-foreground = ${color.c4}
+content-background = ${color.c3}
+
+[module/left-sep-3]
+type = custom/text
+content = %{T2}%{T-}
+content-foreground = ${color.c3}
+content-background = ${color.c2}
+
+[module/left-sep-4]
+type = custom/text
+content = %{T2}%{T-}
+content-foreground = ${color.c2}
+content-background = ${color.c1}
+
+[module/left-sep-5]
+type = custom/text
+content = %{T2}%{T-}
+content-foreground = ${color.c1}
+content-background = ${color.bg}
