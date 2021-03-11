@@ -2,8 +2,8 @@
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
 include "/home/blackbox/.gtkrc-2.0.mine"
-gtk-theme-name="Materia-compact"
-gtk-icon-theme-name="Papirus-Light"
+gtk-theme-name="Nordic"
+gtk-icon-theme-name="Papirus-Dark"
 gtk-font-name="Sans 10"
 gtk-cursor-theme-name="breeze_cursors"
 gtk-cursor-theme-size=0
