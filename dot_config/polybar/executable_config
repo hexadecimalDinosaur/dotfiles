@@ -1,12 +1,26 @@
 [color]
-c1 = #202020
-c2 = #434343
-c3 = #616161
-c4 = #757575
-c5 = #9E9E9E
+c1 = #3b4252
+c2 = #434c5e
+c3 = #4c566a
+c4 = #d8dee9
+c5 = #e5e9f0
+c6 = #eceff4
+c7 = #8fbcbb
+c8 = #88c0d0
+c9 = #81a1c1
+c10 = #5e81ac
+c11 = #bf616a
+c12 = #d08770
+c13 = #ebcb8b
+c14 = #a3be8c
+c15 = #b48ead
 highlight = #505B75
-bg = #000000
-fg = #FFF
+bg = #2e3440
+fg = #d8dee9
+
+
+[vars]
+spacing = 1.5
 
 
 [bar/main]
@@ -15,16 +29,15 @@ foreground = ${color.fg}
 monitor = eDP-1
 monitor-fallback = eDP-1-1
 width = 100%
-height = 24px
+height = 26px
 font-0 = "NotoMono Nerd Font:size=10;2"
 font-1 = "NotoMono Nerd Font:size=18;4"
-modules-left = cpu left-sep-2 mem left-sep-3 temp left-sep-4 disk left-sep-5
+modules-left = cpu separator mem separator temp separator disk
 modules-center = time
-modules-right = right-sep-5 ipv4 right-sep-4 local-ip right-sep-3 wifi right-sep-2
+modules-right = ipv4 separator local-ip separator wifi separator
 tray-position = right
-tray-background = ${color.c4}
-border-bottom-size = 2
-border-color = ${color.c5}
+tray-underline = ${color.c4}
+line-size = 3
 
 
 [bar/bottom]
@@ -34,15 +47,14 @@ foreground = ${color.fg}
 monitor = eDP-1
 monitor-fallback = eDP-1-1
 width = 100%
-height = 24
+height = 26px
 font-0 = "NotoMono Nerd Font:size=10;2"
 font-1 = "NotoMono Nerd Font:size=18;5"
 font-2 = "Meiryo:size=10;2"
-modules-left = rofi left-sep-3 firefox term files discord left-sep-4 playerctl-prev playerctl-play playerctl-next playerctl left-sep-5
+modules-left = rofi separator files firefox term mail discord separator separator playerctl-prev playerctl-play playerctl-next playerctl
 modules-center = i3
-modules-right = right-sep-5 pulseaudio right-sep-4 battery right-sep-3 redshift right-sep-2 notification right-sep-1 power
-border-top-size = 2
-border-color = ${color.c5}
+modules-right = pulseaudio separator battery separator redshift separator notification separator power
+line-size = 3
 
 
 [gloabl/wm]
@@ -58,18 +70,18 @@ enable-click = true
 format = <label-state> <label-mode>
 
 label-focused = %index%
-label-focused-background = ${color.c5}
+label-focused-overline = ${color.c10}
 label-focused-padding = 1
 
 label-unfocused = %index%
 label-unfocused-padding = 1
 
 label-visible = %index%
-label-visible-background = ${color.c4}
+label-visible-overline = ${color.c3}
 label-visible-padding = 1
 
 label-urgent = %index%
-label-urgent-background = #bd2c40
+label-urgent-overline = ${color.c11}
 label-urgent-padding = 1
 
 [module/time]
@@ -85,51 +97,50 @@ label-padding = 1
 type = custom/menu
 expand-right = true
 label-open = 拉
-label-open-background = ${color.c5}
 label-close = 拉
-label-close-background = ${color.c5}
 label-separator = "  "
-label-separator-background = ${color.c5}
 label-open-padding = 1
 label-close-padding = 1
+label-open-overline = ${color.c11}
+label-close-overline = ${color.c11}
 
 menu-0-0 = poweroff
 menu-0-0-exec = menu-open-1
-menu-0-0-background = ${color.c5}
+menu-0-0-overline = ${color.c11}
 menu-1-0 = confirm
 menu-1-0-exec = poweroff &
-menu-1-0-background = ${color.c5}
+menu-1-0-overline = ${color.c11}
 menu-1-1 = cancel
 menu-1-1-exec = menu-open-0
-menu-1-1-background = ${color.c5}
+menu-1-1-overline = ${color.c11}
 
 menu-0-1 = reboot
 menu-0-1-exec = menu-open-2
-menu-0-1-background = ${color.c5}
+menu-0-1-overline = ${color.c11}
 menu-2-0 = confirm
 menu-2-0-exec = reboot &
-menu-2-0-background = ${color.c5}
+menu-2-0-overline = ${color.c11}
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
-menu-2-1-background = ${color.c5}
+menu-2-1-overline = ${color.c11}
 
 menu-0-2 = lock
 menu-0-2-exec = xflock4
-menu-0-2-background = ${color.c5}
+menu-0-2-overline = ${color.c11}
 
 menu-0-3 = logout
 menu-0-3-exec = menu-open-3
-menu-0-3-background = ${color.c5}
+menu-0-3-overline = ${color.c11}
 menu-3-0 = logout
-menu-3-0-exec = i3-msg exit 
-menu-3-0-background = ${color.c5}
+menu-3-0-exec = i3-msg exit
+menu-3-0-overline = ${color.c11}
 menu-3-1 = cancel
 menu-3-1-exec = menu-open-0
-menu-3-1-background = ${color.c5}
+menu-3-1-overline = ${color.c11}
 
 menu-0-4 = switch user
-menu-0-4-background = ${color.c5}
 menu-0-4-exec = dm-tool switch-to-greeter
+menu-0-4-overline = ${color.c11}
 
 
 [module/mem]
@@ -137,8 +148,8 @@ type = internal/memory
 interval = 1
 label =  %gb_free%
 format = <label>
-label-padding = 1.5
-label-background = ${color.c3}
+label-padding = ${vars.spacing}
+label-underline = ${color.c7}
 
 
 [module/cpu]
@@ -146,8 +157,8 @@ type = internal/cpu
 interval = 1
 format = <label>
 label =  %percentage%%
-label-padding = 1.5
-label-background = ${color.c4}
+label-padding = ${vars.spacing}
+label-underline = ${color.c14}
 
 
 [module/temp]
@@ -157,10 +168,9 @@ thermal-zone = 0
 units = true
 label =  %temperature-c%
 label-warn =  %temperature-c%
-label-padding = 1.5
-label-background = ${color.c2}
-label-warn-padding = 1.5
-label-warn-background = ${color.c2}
+label-padding = ${vars.spacing}
+label-warn-padding = ${vars.spacing}
+label-underline = ${color.c9}
 
 
 [module/disk]
@@ -168,8 +178,8 @@ type = internal/fs
 mount-0 = /
 interval = 10
 label-mounted =  %free%
-label-mounted-padding = 1.5
-label-mounted-background = ${color.c1}
+label-mounted-padding = ${vars.spacing}
+label-mounted-underline = ${color.c7}
 
 
 [module/updates]
@@ -178,8 +188,7 @@ exec = expr $(apt list --upgradable 2>/dev/null | wc -l) - 1
 format = <label>
 interval = 60
 label =  %output% updates
-label-padding = 1.5
-label-background = ${color.c1}
+label-padding = ${vars.spacing}
 
 
 [module/wifi]
@@ -188,12 +197,12 @@ interface = wlp2s0
 interval = 3
 format-connected = <label-connected>
 label-connected =  %essid%
-label-connected-padding = 1.5
-label-connected-background = ${color.c3}
+label-connected-padding = ${vars.spacing}
+label-connected-underline = ${color.c7}
 format-disconnected = <label-disconnected>
 label-disconnected = 睊 disconnected
-label-disconnected-padding = 1.5
-label-disconnected-background = ${color.c3}
+label-disconnected-padding = ${vars.spacing}
+label-disconnected-underline = ${color.c12}
 
 [module/local-ip]
 type = internal/network
@@ -201,12 +210,11 @@ interface = wlp2s0
 interval = 3
 format-connected = <label-connected>
 label-connected =  %local_ip%
-label-connected-padding = 1.5
-label-connected-background = ${color.c2}
+label-connected-padding = ${vars.spacing}
+label-connected-underline = ${color.c14}
 format-disconnected = <label-disconnected>
 label-disconnected = " "
-label-disconnected-padding = 1.5
-label-disconnected-background = ${color.c2}
+label-disconnected-padding = ${vars.spacing}
 
 [module/ipv4]
 type = custom/script
@@ -214,23 +222,23 @@ exec = /home/blackbox/.config/polybar/pub-ipv4.sh
 interval = 10
 label = 爵 %output%
 tail = true
-label-background = ${color.c1}
-label-padding = 1.5
+label-padding = ${vars.spacing}
+label-underline = ${color.c10}
 
 
 [module/notification]
 type = custom/text
 click-left = kill -s USR1 $(pidof deadd-notification-center) &
 content = 
-content-padding = 1.5
-content-background = ${color.c4}
+content-padding = ${vars.spacing}
+content-overline = ${color.c13}
 
 [module/redshift]
 type = custom/text
 click-left = redshift-gtk -l 43.76:-79.40 &
 content = 
-content-padding = 1.5
-content-background = ${color.c3}
+content-padding = ${vars.spacing}
+content-overline = ${color.c12}
 
 
 [module/battery]
@@ -241,18 +249,18 @@ adapter = AC
 poll-interval = 5
 
 format-charging = <label-charging>
-format-charging-background = ${color.c2}
-format-charging-padding = 1.5
+format-charging-padding = ${vars.spacing}
 label-charging =  %percentage%%
+label-charging-overline = ${color.c14}
 
 format-discharging = <ramp-capacity> <label-discharging>
 label-discharging = %percentage%%
-format-discharging-background = ${color.c2}
-format-discharging-padding = 1.5
+format-discharging-padding = ${vars.spacing}
+format-discharging-overline = ${color.c14}
 
 label-full =  %percentage%%
-label-full-background = ${color.c2}
-label-full-padding = 1.5
+label-full-padding = ${vars.spacing}
+label-full-overline = ${color.c14}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
@@ -264,30 +272,30 @@ ramp-capacity-4 = 
 [module/alsa]
 type = internal/alsa
 format-volume = <ramp-volume> <label-volume>
-format-volume-background = ${color.c1}
-format-volume-padding = 1.5
+format-volume-overline = ${color.c9}
+format-volume-padding = ${vars.spacing}
 label-volume = %percentage%%
 ramp-volume-0 = 奄
 ramp-volume-1 = 奔
 ramp-volume-2 = 墳
 
 label-muted = "ﱝ Muted"
-label-muted-background = ${color.c1}
-label-muted-padding = 1.5
+label-muted-overline = ${color.c9}
+label-muted-padding = ${vars.spacing}
 
 
 [module/pulseaudio]
 type = internal/pulseaudio
 format-volume = <ramp-volume> <label-volume>
-format-volume-background = ${color.c1}
-format-volume-padding = 1.5
+format-volume-overline = ${color.c9}
+format-volume-padding = ${vars.spacing}
 label-volume = %percentage%%
 ramp-volume-0 = 奄
 ramp-volume-1 = 奔
 ramp-volume-2 = 墳
 label-muted = "ﱝ Muted"
-label-muted-background = ${color.c1}
-label-muted-padding = 1.5
+label-muted-padding = ${vars.spacing}
+label-muted-overline = ${color.c9}
 click-right = pavucontrol &
 
 
@@ -298,8 +306,8 @@ interval = 2
 click-left = playerctl play-pause &
 format = <label>
 label = %output%
-format-background = ${color.c1}
-format-padding = 1.5
+format-padding = ${vars.spacing}
+format-overline = ${color.c7}
 
 
 [module/playerctl-next]
@@ -307,7 +315,7 @@ type = custom/text
 content = 怜
 click-left = playerctl next &
 content-padding = 1
-content-background = ${color.c1}
+content-overline = ${color.c7}
 
 
 [module/playerctl-prev]
@@ -315,7 +323,7 @@ type = custom/text
 content = 玲
 click-left = playerctl previous &
 content-padding = 1
-content-background = ${color.c1}
+content-overline = ${color.c7}
 
 
 [module/playerctl-stop]
@@ -323,7 +331,7 @@ type = custom/text
 content = 栗
 click-left = playerctl stop &
 content-padding = 1
-content-background = ${color.c1}
+content-overline = ${color.c7}
 
 
 [module/playerctl-play]
@@ -331,131 +339,74 @@ type = custom/text
 content = 懶
 click-left = playerctl play-pause &
 content-padding = 1
-content-background = ${color.c1}
+content-overline = ${color.c7}
 
 
 [module/rofi]
 type = custom/text
 content = 
 click-left = rofi -show drun
-content-padding = 1.5
-content-background = ${color.c3}
+content-padding = ${vars.spacing}
+content-overline = ${color.c15}
 
 
 [module/firefox]
 type = custom/text
 content = 
 click-left = firefox &
-content-padding = 1.5
-content-background = ${color.c2}
+content-padding = ${vars.spacing}
+content-overline = ${color.c10}
 
 
 [module/mail]
 type = custom/text
 content = 
 click-left = thunderbird &
-content-padding = 1.5
-content-background = ${color.c2}
+content-padding = ${vars.spacing}
+content-overline = ${color.c10}
 
 
 [module/discord]
 type = custom/text
 content = ﭮ
 click-left = discord &
-content-padding = 1.5
-content-background = ${color.c2}
+content-padding = ${vars.spacing}
+content-overline = ${color.c10}
 
 
 [module/term]
 type = custom/text
 content = 
 click-left = kitty &
-content-padding = 1.5
-content-background = ${color.c2}
+content-padding = ${vars.spacing}
+content-overline = ${color.c10}
 
 
 [module/files]
 type = custom/text
 content = 
 click-left = nautilus &
-content-padding = 1.5
-content-background = ${color.c2}
+content-padding = ${vars.spacing}
+content-overline = ${color.c10}
 
 
 [module/vscode]
 type = custom/text
 content = 
 click-left = code &
-content-padding = 1.5
-content-background = ${color.c2}
+content-padding = ${vars.spacing}
+content-overline = ${color.c10}
 
 
 [module/mousepad]
 type = custom/text
 content = 
 click-left = mousepad &
-content-padding = 1.5
-content-background = ${color.c2}
+content-padding = ${vars.spacing}
+content-overline = ${color.c10}
 
 
-;-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-
-[module/right-sep-1]
+[module/separator]
 type = custom/text
-content = %{T2}%{T-}
-content-foreground = ${color.c5}
-content-background = ${color.c4}
-
-[module/right-sep-2]
-type = custom/text
-content = %{T2}%{T-}
-content-foreground = ${color.c4}
-content-background = ${color.c3}
-
-[module/right-sep-3]
-type = custom/text
-content = %{T2}%{T-}
-content-foreground = ${color.c3}
-content-background = ${color.c2}
-
-[module/right-sep-4]
-type = custom/text
-content = %{T2}%{T-}
-content-foreground = ${color.c2}
-content-background = ${color.c1}
-
-[module/right-sep-5]
-type = custom/text
-content = %{T2}%{T-}
-content-foreground = ${color.c1}
-content-background = ${color.bg}
-
-[module/left-sep-1]
-type = custom/text
-content = %{T2}%{T-}
-content-foreground = ${color.c5}
-content-background = ${color.c4}
-
-[module/left-sep-2]
-type = custom/text
-content = %{T2}%{T-}
-content-foreground = ${color.c4}
-content-background = ${color.c3}
-
-[module/left-sep-3]
-type = custom/text
-content = %{T2}%{T-}
-content-foreground = ${color.c3}
-content-background = ${color.c2}
-
-[module/left-sep-4]
-type = custom/text
-content = %{T2}%{T-}
-content-foreground = ${color.c2}
-content-background = ${color.c1}
-
-[module/left-sep-5]
-type = custom/text
-content = %{T2}%{T-}
-content-foreground = ${color.c1}
-content-background = ${color.bg}
+content = " "
+content-padding= 0.5
