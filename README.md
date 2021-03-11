@@ -29,4 +29,5 @@ Configuration files for my Arch Linux i3wm setup
 * [rofi-i3-keybinds](https://github.com/UserBlackBox/rofi-i3-keybinds)
 * [rofimoji (matf fork)](https://git.teknik.io/matf/rofimoji/)
 * [ncspot](https://github.com/hrkfdn/ncspot)
+* [gnome-sushi](https://gitlab.gnome.org/GNOME/sushi)
 
