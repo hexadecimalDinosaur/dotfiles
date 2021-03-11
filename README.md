@@ -4,6 +4,12 @@ Configuration files for my Arch Linux i3wm setup
 
 ![screenshot](https://ivyfanchiang.dev/static/assets/dotfiles.png)
 
+# Theme Information
+
+**Icon Theme**: Papirus ([Papirus Nord Folder Colors](https://github.com/Adapta-Projects/Papirus-Nord))
+
+**GTK Theme**: [Nordic](https://github.com/EliverLara/Nordic/tree/v1.9.0)
+
 # Software Used
 
 * [i3-gaps](https://github.com/Airblader/i3)
@@ -22,4 +28,5 @@ Configuration files for my Arch Linux i3wm setup
 * [rofi-ykman](https://github.com/nukeop/rofi-ykman)
 * [rofi-i3-keybinds](https://github.com/UserBlackBox/rofi-i3-keybinds)
 * [rofimoji (matf fork)](https://git.teknik.io/matf/rofimoji/)
+* [ncspot](https://github.com/hrkfdn/ncspot)
 
