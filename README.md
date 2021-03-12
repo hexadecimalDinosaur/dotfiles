@@ -38,6 +38,20 @@ Configuration files for my Arch Linux i3wm setup
 * [rofi-i3-keybinds](https://github.com/UserBlackBox/rofi-i3-keybinds)
 * [rofimoji (matf fork)](https://git.teknik.io/matf/rofimoji/)
 
+### Firefox Theme
+
+`userChrome.css` and `userContent.css` can be found in the `firefox/chrome` folder
+
+Firefox homepage is a modified version of [Jaredk3nt/homepage](https://github.com/Jaredk3nt/homepage) with custom links. The changed CSS can be found in `firefox/styles.css`
+
+
+
 ## Other Screenshots
 
+Rofi Screenshot
+
 ![rofi](rofi.png)
+
+Firefox `userChrome.css` and `userContent.css` theme
+
+![firefox](firefox.png)
