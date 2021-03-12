@@ -68,7 +68,7 @@ ZSH_THEME="ys"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git man python sudo adb tmux octoprint-cli-completion)
+plugins=(git npm man python sudo adb tmux zsh-completions fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -103,10 +103,52 @@ alias vim="nvim"
 alias ls="colorls"
 alias kitty-ssh="kitty +kitten ssh"
 alias spt="spotifyd && spt && pkill -f spotifyd"
+alias sudo='sudo '
+
+alias arsenal="python \"/home/blackbox/Applications/CTF Tools/arsenal/arsenal/app.py\""
+alias sherlock="python /home/blackbox/Applications/CTF\\ Tools/sherlock/sherlock/sherlock.py"
 
 export GPG_TTY=$(tty)
 
+# export PATH="/home/blackbox/miniconda3/bin:$PATH"  # commented out by conda initialize
+
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-
 eval $(thefuck --alias)
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/bitcomplete bit
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/blackbox/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/blackbox/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/blackbox/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/blackbox/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+export PYTHONSTARTUP=~/.pythonrc
+
+eval "$(zoxide init zsh)"
+eval "$(navi widget zsh)"
+if [ -e /home/blackbox/.nix-profile/etc/profile.d/nix.sh ]; then . /home/blackbox/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+export FZF_BASE="$HOME/.fzf"
+
+codi() {
+  local syntax="${1:-python}"
+  shift
+  vim -c \
+    "let g:startify_disable_at_vimenter = 1 |\
+    set bt=nofile ls=0 noru nonu nornu |\
+    hi ColorColumn ctermbg=NONE |\
+    hi VertSplit ctermbg=NONE |\
+    hi NonText ctermfg=0 |\
+    Codi $syntax" "$@"
+}

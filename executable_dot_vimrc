@@ -37,12 +37,15 @@ Plugin 'dense-analysis/ale'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/syntastic'
 Plugin 'arcticicestudio/nord-vim'
-Plugin 'artur-shaik/vim-javacomplete2'
+" Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'neoclide/coc.nvim'
 Plugin 'KabbAmine/zeavim.vim'
 Plugin 'preservim/tagbar'
 Plugin 'bronson/vim-trailing-whitespace'
+" Plugin 'luochen1990/rainbow'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'metakirby5/codi.vim'
 " Plugin 'vbe0201/vimdiscord'
 " Plugin 'anned20/vimsence'
 " Plugin 'vim-airline/vim-airline'
@@ -101,3 +104,5 @@ inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
+
+let g:rainbow_active = 1
