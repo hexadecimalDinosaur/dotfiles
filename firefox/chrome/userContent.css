@@ -1,0 +1,8 @@
+@-moz-document url("about:newtab") {
+	body{
+		background-color:#3b4252!important;
+	}
+	input{
+		background-color: #2e3440!important;
+	}
+}
