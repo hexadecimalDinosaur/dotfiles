@@ -520,6 +520,7 @@ menu:not(.subviewbutton) > .menu-right image {
 
 .tab-background[selected=true] {
   color: #111111 !important;
+  background-image: linear-gradient(var(--tab-background-color, transparent), var(--tab-background-color, transparent)), linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)), var(--lwt-header-image, none) !important;
 }
 
 .tabbrowser-tab {
