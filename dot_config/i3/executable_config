@@ -9,7 +9,7 @@ font pango: Noto Sans 8
 floating_modifier $super
 
 #autostart
-exec --no-startup-id feh --bg-scale ~/Pictures/Random/NfiHi07.jpg #wallpaper
+exec --no-startup-id feh --bg-scale ~/Pictures/Random/nitroglycerin.png #wallpaper
 #exec --no-startup-id xsettingsd & #use xfce4 settings
 #exec --no-startup-id compton -b #compositor
 exec_always picom &
@@ -17,16 +17,16 @@ exec --nostartup-id flashfocus &
 #exec fusuma & #touchpad gestures
 #exec systemctl --user start xfce4-notifyd #xfce notification daemon
 exec deadd-notification-center & #notification daemon
-exec --no-startup-id udiskie -t #removable drives
+exec --no-startup-id udiskie -t & #removable drives
 #exec xautolock -time 5 -locker "sh /home/blackbox/.local/bin/lock.sh" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'" #autolock
-exec xrandr --output HDMI-1 --auto --left-of eDP-1 #second monitor
-exec xrandr --output HDMI-1-1 --auto --left-of eDP-1-1
-exec xrandr --output HDMI-1 --mode 1920x1080 --rate 74.97
+exec xrandr --output HDMI-1 --auto --right-of eDP-1 #second monitor
+exec xrandr --output HDMI-1-1 --auto --right-of eDP-1-1
+exec xrandr --output HDMI-1 --mode 1920x1080 --rate 165.0
 exec xinput --set-prop $(xinput list --id-only "DELL0804:00 06CB:7E7E Touchpad") 316 0 & #touchpad setting
 exec blueman-applet & #bluetooth
 exec system-config-printer-applet & #printer
 exec /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 & #administration
-exec kmix &
+#exec kmix &
 exec --no-startup-id systemctl --user stop xfce4-notifyd &
 exec systemctl --user start deadd-notification-center.service
 exec optimus-manager-qt &
@@ -43,9 +43,11 @@ bindsym $super+a exec kill -s USR1 $(pidof deadd-notification-center) & #deadd n
 bindsym $super+l exec xflock4 #lock screen
 bindsym $super+Shift+f exec nautilus
 bindsym $super+y exec rofi-ykman
+bindsym $super+z exec rofi-zeal
 bindsym $super+Tab exec rofi -show window #rofi windows
 #bindsym Print exec scrot ~/Pictures/Screenshots/i3-screenshot-%a-%d%b%y-%H.%M.png #screenshot
 bindsym $super+k exec bash ~/Documents/Git\ Projects/rofi-i3-keybinds/rofi-i3-keybinds.sh #keybind menu
+bindsym $super+u exec rofimoji -c --rofi-args "-p "
 
 #change volume
 bindsym XF86AudioRaiseVolume exec amixer -q set Master "5%+" #increase volume
@@ -128,7 +130,7 @@ bindsym $super+Shift+0 move container to workspace 10
 bindsym $super+Shift+r restart
 
 # exit i3
-bindsym $super+q exec "i3-nagbar -t warning -m 'Really, exit?' -b 'Yes' 'i3-msg exit'"
+bindsym $super+q exec "i3-nagbar -t warning -m 'Really, exit?' -b 'Yes' 'i3-msg exit'" #exit i3wm
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -151,8 +153,8 @@ bindsym $super+Ctrl+Left resize grow width 1 px or 1 ppt
 
 # window rules, you can find the window class using xprop
 for_window [class=".*"] border pixel 0
-assign [class=Lxappearance|System-config-printer.py|Lxtask|GParted|Pavucontrol|Exo-helper*|Lxrandr|Arandr] 0
-for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol|Nautilus|caligator|Colorpicker|Kite|TKINTER|IDLE|electrum|yubiath-desktop|remmina|minecraft-launcher|kruler|processing-java|tor-browser|gnome-screenshot] floating enable
+assign [class=Lxappearance|GParted|Exo-helper*|Lxrandr] 0
+for_window [class=Viewnior|feh|Audacious|System-config-printer.py|File-roller|Lxappearance|Lxtask|Pavucontrol|Nautilus|caligator|Colorpicker|Kite|TKINTER|IDLE|electrum|yubiath-desktop|remmina|minecraft-launcher|kruler|processing-java|tor-browser|gnome-screenshot|ulauncher|zeal] floating enable
 for_window [class=URxvt|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
 for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
 for_window [class=Kite|processing-java] border normal
@@ -177,4 +179,6 @@ gaps outer 20
 
 bindsym $super+Shift+b border normal
 bindsym $super+Shift+Ctrl+b border pixel 0
+
+client.focused "#5E81AC" "#5E81AC" "#d8dee9" "#5E81AC" "#5E81AC"
 
