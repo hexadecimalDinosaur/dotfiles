@@ -1,21 +1,11 @@
-configuration {
-  display-drun: "";
-  display-window: "";
-  display-windowcd: "";
-  display-ssh: "";
-  show-icons: true;
-  drun-display-format: "{icon} {name}";
-}
-
 * {
   font: "NotoMono Nerd Font 12";
   background-color: #3b4252;
   border-color: #3b4252;
   text-color: #d8dee9;
+  spacing: 0;
   width: 680px;
   height: 465px;
-  location: 0;
-  spacing: 0;
 }
 
 inputbar {
@@ -30,11 +20,10 @@ prompt {
 }
 
 textbox {
-  background-color: #3b4252;
+  background-color: #2e343f;
   border: 0 0 1px 0;
-  border-color: #3b4252;
+  border-color: #282C33;
   padding: 8px 13px;
-
 }
 
 entry {
@@ -49,13 +38,7 @@ listview {
 
 element {
   border: 0 0 1px 0;
-  padding: 4px;
-}
-
-element-text {
-  expand: true;
-  vertical-align: 0.5;
-  padding: 0px 13px;
+  padding: 10px;
 }
 
 element selected {
@@ -63,6 +46,12 @@ element selected {
 }
 
 element-icon {
-    size: 30px;
-    border: 0px;
+  size: 20px;
+  background-color: inherit;
+  text-color: inherit;
+}
+
+element-text {
+  background-color: inherit;
+  text-color: inherit;
 }
