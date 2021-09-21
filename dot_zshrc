@@ -104,9 +104,10 @@ alias ls="colorls"
 alias kitty-ssh="kitty +kitten ssh"
 alias spt="spotifyd && spt && pkill -f spotifyd"
 alias sudo='sudo '
-
-alias arsenal="python \"/home/blackbox/Applications/CTF Tools/arsenal/arsenal/app.py\""
-alias sherlock="python /home/blackbox/Applications/CTF\\ Tools/sherlock/sherlock/sherlock.py"
+alias cp=cpg
+alias mv=mvg
+alias arsenal="python \"/home/blackbox/Applications/CTFTools/arsenal/arsenal/app.py\""
+alias sherlock="python /home/blackbox/Applications/CTFTools/sherlock/sherlock/sherlock.py"
 
 export GPG_TTY=$(tty)
 
@@ -152,3 +153,7 @@ codi() {
     hi NonText ctermfg=0 |\
     Codi $syntax" "$@"
 }
+
+export PATH="/home/blackbox/.gem/ruby/2.7.0/bin:/home/blackbox/go/bin:/home/blackbox/.gem/ruby/3.0.0/bin:$PATH"
+export EDITOR=nvim
+source /home/blackbox/.config/broot/launcher/bash/br
