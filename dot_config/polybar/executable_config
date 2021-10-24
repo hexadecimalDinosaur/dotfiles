@@ -15,7 +15,7 @@ c13 = #ebcb8b
 c14 = #a3be8c
 c15 = #b48ead
 highlight = #505B75
-bg = #2e3440
+bg = #002e3440
 fg = #d8dee9
 
 
@@ -51,7 +51,7 @@ height = 26px
 font-0 = "NotoMono Nerd Font:size=10;2"
 font-1 = "NotoMono Nerd Font:size=18;5"
 font-2 = "Meiryo:size=10;2"
-modules-left = rofi separator files firefox term mail discord separator separator playerctl-prev playerctl-play playerctl-next playerctl
+modules-left = rofi separator files firefox term mail discord separator playerctl-prev playerctl-play playerctl-next playerctl
 modules-center = i3
 modules-right = pulseaudio separator battery separator redshift separator notification separator power
 line-size = 3
@@ -218,7 +218,7 @@ label-disconnected-padding = ${vars.spacing}
 
 [module/ipv4]
 type = custom/script
-exec = /home/blackbox/.config/polybar/pub-ipv4.sh
+exec = /home/blackbox/.config/polybar/pub-ipv4.sh 2> /dev/null
 interval = 10
 label = 爵 %output%
 tail = true
@@ -235,7 +235,7 @@ content-overline = ${color.c13}
 
 [module/redshift]
 type = custom/text
-click-left = redshift-gtk -l 43.76:-79.40 &
+click-left = redshift-gtk &
 content = 
 content-padding = ${vars.spacing}
 content-overline = ${color.c12}
@@ -301,8 +301,10 @@ click-right = pavucontrol &
 
 [module/playerctl]
 type = custom/script
-exec = $HOME/.config/polybar/scripts/player-mpris-simple.sh
-interval = 2
+;tail = true
+exec = /home/blackbox/.config/polybar/scripts/player-mpris-simple.sh
+;exec = /home/blackbox/.config/polybar/zscroll.sh
+interval = 1
 click-left = playerctl play-pause &
 format = <label>
 label = %output%
@@ -353,7 +355,7 @@ content-overline = ${color.c15}
 [module/firefox]
 type = custom/text
 content = 
-click-left = firefox &
+click-left = firefox-developer-edition &
 content-padding = ${vars.spacing}
 content-overline = ${color.c10}
 
