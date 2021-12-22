@@ -33,6 +33,7 @@ Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'dense-analysis/ale'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/syntastic'
@@ -46,10 +47,16 @@ Plugin 'bronson/vim-trailing-whitespace'
 " Plugin 'luochen1990/rainbow'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'metakirby5/codi.vim'
+Plugin 'ap/vim-css-color'
+Plugin 'AndrewRadev/tagalong.vim'
 " Plugin 'vbe0201/vimdiscord'
 " Plugin 'anned20/vimsence'
 " Plugin 'vim-airline/vim-airline'
 " Plugin 'vim-airline/vim-airline-themes'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'szymonmaszke/vimpyter'
+Plugin 'AndrewRadev/splitjoin.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -69,7 +76,7 @@ set number
 set laststatus=2
 set cursorline
 highlight CursorLineNR ctermbg=grey
-map <C-f> :NERDTreeToggle<CR>
+map <C-f> :NERDTreeTabsToggle<CR>
 highlight clear CursorLine
 colorscheme nord
 set noshowmode
@@ -85,7 +92,6 @@ let g:lightline = {
       \ 'subseparator': { 'left': '', 'right': '' }
       \ }
 map <C-h> :%!xxd<CR>
-map <C-t> :term zsh<CR>
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 " let g:airline_powerline_fonts = 1
 " let g:airline_theme='deus'
@@ -106,3 +112,5 @@ inoremap <silent><expr> <Tab>
       \ coc#refresh()
 
 let g:rainbow_active = 1
+
+map <C-t> :tabnew<CR>

@@ -1,0 +1,33 @@
+{
+	"coc.githubUsers.githubAccessToken":"3864d15a73159b30d89c371b908695feae851d28",
+
+	"languageserver": {
+		"ccls": {
+    			"command": "ccls",
+    			"filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+    			"rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+    			"initializationOptions": {
+        			"cache": {
+          				"directory": "/tmp/ccls"
+        			}
+      			}
+		},
+		"latex": {
+			"command": "/usr/bin/texlab",
+			"ignoredRootPaths": ["~"],
+			"filetypes": ["tex", "plaintex", "bib", "context"]
+		},
+		"efm": {
+			"command": "/home/blackbox/go/bin/efm-langserver",
+			"args": [],
+			"filetypes": ["vim", "eruby", "markdown"]
+		}
+  	},
+
+	"java.configuration.runtimes": [
+  		{
+    			"name": "JavaSE-11",
+    			"path": "/usr/lib/jvm/java-11-openjdk"
+  		}
+	]
+}

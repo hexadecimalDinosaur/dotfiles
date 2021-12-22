@@ -9,7 +9,7 @@ font pango: Noto Sans 8
 floating_modifier $super
 
 #autostart
-exec --no-startup-id feh --bg-scale ~/Pictures/Random/moon.png #wallpaper
+exec --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/moon.png #wallpaper
 #exec --no-startup-id xsettingsd & #use xfce4 settings
 #exec --no-startup-id compton -b #compositor
 exec_always picom &
@@ -157,7 +157,7 @@ bindsym $super+Ctrl+Left resize grow width 1 px or 1 ppt
 # window rules, you can find the window class using xprop
 for_window [class=".*"] border pixel 0
 assign [class=Lxappearance|GParted|Exo-helper*|Lxrandr] 0
-for_window [class=Viewnior|feh|Audacious|System-config-printer.py|File-roller|Lxappearance|Lxtask|Pavucontrol|Nautilus|caligator|Colorpicker|Kite|TKINTER|IDLE|electrum|yubiath-desktop|remmina|minecraft-launcher|kruler|processing-java|tor-browser|gnome-screenshot|ulauncher|zeal|mpv] floating enable
+for_window [class=Viewnior|feh|Audacious|System-config-printer.py|File-roller|Lxappearance|Lxtask|Pavucontrol|Nautilus|caligator|Colorpicker|Kite|TKINTER|IDLE|electrum|yubiath-desktop|remmina|minecraft-launcher|kruler|processing-java|tor-browser|gnome-screenshot|ulauncher|zeal|mpv|Mate-calc|zoom] floating enable
 for_window [class=URxvt|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
 for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
 for_window [class=Kite|processing-java] border normal
