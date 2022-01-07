@@ -1,8 +1,25 @@
 @-moz-document url("about:newtab") {
 	body{
-		background-color:#3b4252!important;
+		--newtab-background-color: #3b4252!important;
+		--newtab-background-color-secondary: #2e3440!important;
 	}
-	input{
-		background-color: #2e3440!important;
+	button{
+		/*background-color: #2e3440!important;*/
+	}
+}
+
+@-moz-document url("about:preferences"), url("about:addons") {
+	:host, :root {
+		--in-content-page-background: #3b4252!important;
+		--in-content-page-color: #d8dee9!important;
+		--in-content-deemphasized-text: #e5e9f0!important;
+		--in-content-box-background: #2e3440!important;
+		--in-content-box-background-odd: #2e3440!important;
+		--in-content-box-info-background: #2e3440!important;
+		--in-content-border-color: #d8dee9!important;
+		--in-content-button-background: #434c5e!important;
+		--in-content-button-background-hover: #4c566a!important;
+		--in-content-primary-button-background: #88c0d0!important;
+		--in-content-primary-button-background-hover: #81a1c1!important;
 	}
 }
