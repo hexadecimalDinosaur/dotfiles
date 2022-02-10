@@ -49,7 +49,7 @@ bindsym $super+z exec rofi-zeal
 bindsym $super+Tab exec rofi -show window #rofi windows
 #bindsym Print exec scrot ~/Pictures/Screenshots/i3-screenshot-%a-%d%b%y-%H.%M.png #screenshot
 bindsym $super+k exec bash ~/Documents/Git\ Projects/rofi-i3-keybinds/rofi-i3-keybinds.sh #keybind menu
-bindsym $super+u exec rofimoji -c --rofi-args "-p "
+bindsym $super+u exec rofi -show unicode
 bindsym $super+Shift+s exec flameshot gui & #flameshot screenshot
 
 #change volume

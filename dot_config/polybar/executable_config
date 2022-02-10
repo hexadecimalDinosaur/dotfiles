@@ -52,6 +52,7 @@ font-0 = "NotoMono Nerd Font:size=10;2"
 font-1 = "NotoMono Nerd Font:size=18;5"
 font-2 = "Meiryo:size=10;2"
 modules-left = rofi separator files firefox term mail discord separator playerctl-prev playerctl-play playerctl-next playerctl
+;modules-left = playerctl-prev playerctl-play playerctl-next playerctl
 modules-center = i3
 modules-right = pulseaudio separator battery separator redshift separator notification separator power
 line-size = 3
@@ -231,14 +232,14 @@ type = custom/text
 click-left = kill -s USR1 $(pidof deadd-notification-center) &
 content = 
 content-padding = ${vars.spacing}
-content-overline = ${color.c13}
+content-overline = ${color.c12}
 
 [module/redshift]
 type = custom/text
 click-left = redshift-gtk &
 content = 
 content-padding = ${vars.spacing}
-content-overline = ${color.c12}
+content-overline = ${color.c13}
 
 
 [module/battery]
